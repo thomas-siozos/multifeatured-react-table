@@ -7,15 +7,49 @@
     cursor: col-resize;
     user-select: none;
     touch-action: none;
+    background-color: #7FB77E;
 }
 
 table {
     width: 100%;
+    padding: 5px;
+    border-spacing: 0;
+    font-family: Roboto, serif;
+}
+
+thead {
+    background-color: #7FB77E;
+    height: 40px;
+    color: white;
 }
 
 th {
-    border: 1px solid lightgray;
     padding: 2px 4px;
+    text-align: left;
+}
+
+td {
+    padding-top: 10px;
+}
+
+td {
+    border-bottom: 1px solid lightgray;
+    height: 40px;
+}
+
+tbody tr:last-child td {
+    border-bottom: unset;
+}
+
+tbody tr:hover {
+    background-color: #FBF8F1;
+}
+
+.table-container {
+    margin: 20px;
+    border: 1px solid #16213E;
+    border-radius: 10px;
+    box-shadow: 0px 0 10px #16213E;
 }
 
 .flex-direction-row {
@@ -24,14 +58,13 @@ th {
 }
 
 .filters-container {
-    padding: 5px 0 5px 0;
+    padding: 5px;
 }
 
 .table-title {
     flex-grow: 2;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1.5rem;
-    font-family: Roboto, serif;
 }
 
 .pagination-container {
@@ -39,7 +72,7 @@ th {
 }
 
 .pagination-button {
-    color: black;
+    color: #393E46;
     width: 25px;
     height: 25px;
     display: flex;
@@ -49,7 +82,7 @@ th {
 }
 
 .pagination-button:hover {
-    background-color: #5800FF;
+    background-color: #222831;
     color: white;
 }
 
