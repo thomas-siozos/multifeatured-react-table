@@ -1,8 +1,9 @@
+import AdvancedTable from "./AdvancedTable";
+import './App.css';
 
 function App() {
   return (
-    <div>
-    </div>
+    <AdvancedTable/>
   );
 }
 
