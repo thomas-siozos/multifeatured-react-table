@@ -1,4 +1,4 @@
-.resizer {
+.table-container .resizer {
     position: absolute;
     right: 0;
     top: 0;
@@ -10,38 +10,38 @@
     background-color: #7FB77E;
 }
 
-table {
+.table-container table {
     width: 100%;
     padding: 5px;
     border-spacing: 0;
     font-family: Roboto, serif;
 }
 
-thead {
+.table-container thead {
     background-color: #7FB77E;
     height: 40px;
     color: white;
 }
 
-th {
+.table-container th {
     padding: 2px 4px;
     text-align: left;
 }
 
-td {
+.table-container td {
     padding-top: 10px;
 }
 
-td {
+.table-container td {
     border-bottom: 1px solid lightgray;
     height: 40px;
 }
 
-tbody tr:last-child td {
+.table-container tbody tr:last-child td {
     border-bottom: unset;
 }
 
-tbody tr:hover {
+.table-container tbody tr:hover {
     background-color: #FBF8F1;
 }
 
@@ -52,26 +52,28 @@ tbody tr:hover {
     box-shadow: 0px 0 10px #16213E;
 }
 
-.flex-direction-row {
+.table-container .flex-direction-row {
     display: flex;
     flex-direction: row;
 }
 
-.filters-container {
+.table-container .filters-container {
     padding: 5px;
 }
 
-.table-title {
+.table-container .table-title {
     flex-grow: 2;
     font-weight: 500;
     font-size: 1.5rem;
 }
 
-.pagination-container {
-    gap: 10px;
+.table-container .pagination-container {
+    display: grid;
+    grid-template-columns: 50% 25px 1fr 25px;
+    align-content: center;
 }
 
-.pagination-button {
+.table-container .pagination-button {
     color: #393E46;
     width: 25px;
     height: 25px;
@@ -81,11 +83,57 @@ tbody tr:hover {
     padding: 0 2px 0 2px;
 }
 
-.pagination-button:hover {
+.table-container .pagination-button:hover {
     background-color: #222831;
     color: white;
 }
 
-input, select {
+.table-container input, select {
     border-radius: 5px;
+}
+
+.table-container #page-index-input {
+    width: 80%;
+}
+
+.table-container select {
+    width: 70%;
+}
+
+.table-container .select-container {
+    display: flex;
+    justify-content: center;
+}
+
+.table-container .search-filter {
+    display: flex;
+    align-items: center;
+}
+
+.table-container .sorting-arrow {
+    width: 8px;
+    height: 8px;
+    background-color: transparent;
+    border-right: 2px white solid;
+    border-top: 2px white solid;
+    transition: transform 0.3s ease;
+}
+
+.table-container .sorting-arrow.sorting-arrow-up {
+    transform: rotate(-45deg);
+}
+
+.table-container .sorting-arrow.sorting-arrow-down {
+    transform: rotate(135deg);
+    left: 4px;
+}
+
+.table-container .sorting-arrow-display-none {
+    display: none;
+}
+
+.table-container .sorting-arrow-container {
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
 }

@@ -1,12 +1,20 @@
 import React, {useState} from "react";
 import {MOCK_DATA} from "./mockData";
-import {flexRender, getCoreRowModel, getPaginationRowModel, useReactTable} from "@tanstack/react-table";
+import {
+    flexRender,
+    getCoreRowModel, getFilteredRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
+    useReactTable
+} from "@tanstack/react-table";
+import PropTypes from 'prop-types';
 
 const columns = [
     {
         id: "employee_id",
         header: "Employee ID",
-        accessorKey: "employee_id"
+        accessorKey: "employee_id",
+        enableGlobalFilter: false
     },
     {
         id: "first_name",
@@ -41,46 +49,82 @@ const columns = [
     {
         id: "salary",
         header: "Salary",
-        accessorKey: "salary"
+        accessorKey: "salary",
+        enableGlobalFilter: false
     }
 ];
 
-const AdvancedTable = () => {
+const AdvancedTable = (props) => {
     const [data, setData] = useState(() => [...MOCK_DATA]);
+    const [sorting, setSorting] = useState([]);
+    const [globalFilter, setGlobalFilter] = useState('');
 
     const table = useReactTable({
         data,
         columns,
+        state: {
+            sorting,
+            globalFilter
+        },
         enableColumnResizing: true,
         columnResizeMode: 'onChange',
+        onSortingChange: setSorting,
+        onGlobalFilterChange: setGlobalFilter,
+        getFilteredRowModel: getFilteredRowModel(),
         getCoreRowModel: getCoreRowModel(),
-        getPaginationRowModel: getPaginationRowModel()
+        getPaginationRowModel: getPaginationRowModel(),
+        getSortedRowModel: getSortedRowModel()
     });
 
+    const getContainerCssClass = () => {
+        if (props.containerCssClass) return props.containerCssClass;
+        return "table-container";
+    }
+
+    const getSrotingArrowStyles = (id) => {
+        let classes = ["sorting-arrow"];
+        let findId = sorting.filter(e => e.id === id);
+        classes.push(findId.length > 0 && !findId[0].desc ? "sorting-arrow-up" : "sorting-arrow-down");
+        if (findId.length === 0) return "sorting-arrow-display-none";
+        return classes.join(" ");
+    }
+
     return (
-        <div className="table-container">
+        <div className={getContainerCssClass()}>
             <div className="filters-container flex-direction-row">
                 <div className="table-title">
                     Employees Table
                 </div>
-                <div className="pagination-container flex-direction-row">
-                    <select
-                        value={table.getState().pagination.pageSize}
-                        onChange={e => {
-                            table.setPageSize(Number(e.target.value))
+                <div className="search-filter">
+                    <input
+                        placeholder="Search all columns..."
+                        type="text"
+                        onChange={(e) => {
+                            setGlobalFilter(String(e.target.value))
                         }}
-                    >
-                        {[10, 20, 30, 40, 50].map(pageSize => (
-                            <option key={pageSize} value={pageSize}>
-                                Show {pageSize}
-                            </option>
-                        ))}
-                    </select>
-                    <div className="pagination-button">
+                    />
+                </div>
+                <div className="pagination-container">
+                    <div className="select-container">
+                        <select
+                            value={table.getState().pagination.pageSize}
+                            onChange={e => {
+                                table.setPageSize(Number(e.target.value))
+                            }}
+                        >
+                            {[10, 20, 30, 40, 50].map(pageSize => (
+                                <option key={pageSize} value={pageSize}>
+                                    Show {pageSize} of {table.getFilteredRowModel().rows.length}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="pagination-button" onClick={() => table.previousPage()}>
                         {"<"}
                     </div>
-                    <div>
+                    <div className="select-container">
                         <input
+                            id="page-index-input"
                             type="number"
                             value={table.getState().pagination.pageIndex + 1}
                             onChange={e => {
@@ -89,7 +133,9 @@ const AdvancedTable = () => {
                             }}
                         />
                     </div>
-                    <div className="pagination-button">
+                    <div className="pagination-button" onClick={() =>
+                        table.getState().pagination.pageIndex < table.getPageCount() - 1 && table.nextPage()}
+                    >
                         {">"}
                     </div>
                 </div>
@@ -104,10 +150,22 @@ const AdvancedTable = () => {
                                 colSpan={header.colSpan}
                                 style={{ position: 'relative', width: header.getSize() }}
                             >
-                                {flexRender(
-                                    header.column.columnDef.header,
-                                    header.getContext()
-                                )}
+                                <div
+                                    {...{
+                                        className: header.column.getCanSort()
+                                            ? 'cursor-pointer select-none flex-direction-row'
+                                            : 'flex-direction-row',
+                                        onClick: header.column.getToggleSortingHandler(),
+                                    }}
+                                >
+                                    {flexRender(
+                                        header.column.columnDef.header,
+                                        header.getContext()
+                                    )}
+                                    <div className="sorting-arrow-container">
+                                        <div className={getSrotingArrowStyles(header.id)}/>
+                                    </div>
+                                </div>
                                 {header.column.getCanResize() && (
                                     <div
                                         onMouseDown={header.getResizeHandler()}
@@ -136,6 +194,10 @@ const AdvancedTable = () => {
             </table>
         </div>
     );
+}
+
+AdvancedTable.propTypes = {
+    containerCssClass: PropTypes.string
 }
 
 export default AdvancedTable;
