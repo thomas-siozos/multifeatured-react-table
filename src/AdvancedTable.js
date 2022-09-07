@@ -57,11 +57,11 @@ const AdvancedTable = (props) => {
 
     return (
         <div className={getContainerCssClass()}>
-            <div className="filters-container flex-direction-row">
+            <div className="table-header-container flex-direction-row">
                 <div className="table-title">
                     Employees Table
                 </div>
-                <div className="pagination-container">
+                <div className="filters-container">
                     <div className="flex-center search-column-input-container">
                         <input
                             placeholder="Search all columns..."
@@ -73,7 +73,7 @@ const AdvancedTable = (props) => {
                         />
                         <IoIosCloseCircle onClick={() => setGlobalFilter('')} className="delete-button-input"/>
                     </div>
-                    <div>
+                    <div className='flex-direction-row'>
                         <div className="pagination-button" onClick={() => table.setPageIndex(0)}>
                             {"<<"}
                         </div>

@@ -57,7 +57,7 @@ tbody tr:hover {
     flex-direction: row;
 }
 
-.filters-container {
+.table-header-container {
     padding: 5px;
 }
 
@@ -67,7 +67,7 @@ tbody tr:hover {
     font-size: 1.5rem;
 }
 
-.pagination-container {
+.filters-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
