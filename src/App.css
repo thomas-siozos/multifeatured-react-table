@@ -1,3 +1,9 @@
+:root {
+    --dark-main-color: #0F3460;
+    --hover-main-color: #E94560;
+    --hover-rows-color: #FBF8F1;
+}
+
 .resizer {
     position: absolute;
     right: 0;
@@ -7,7 +13,7 @@
     cursor: col-resize;
     user-select: none;
     touch-action: none;
-    background-color: #0F3460;
+    background-color: var(--dark-main-color);
 }
 
 table {
@@ -18,7 +24,7 @@ table {
 }
 
 thead {
-    background-color: #0F3460;
+    background-color: var(--dark-main-color);
     height: 40px;
     color: white;
 }
@@ -42,7 +48,7 @@ tbody tr:last-child td {
 }
 
 tbody tr:hover {
-    background-color: #FBF8F1;
+    background-color: var(--hover-rows-color);
 }
 
 .table-container {
@@ -88,7 +94,7 @@ tbody tr:hover {
 }
 
 .pagination-button:hover {
-    background-color: #0F3460;
+    background-color: var(--dark-main-color);
     color: white;
 }
 
@@ -167,7 +173,7 @@ input {
 }
 
 .select-modal-container ul:hover {
-    background-color: #FBF8F1;
+    background-color: var(--hover-rows-color);
 }
 
 .select-modal-body {
@@ -176,7 +182,11 @@ input {
 
 #settings-icon {
     padding-top: 5px;
-    color: #0F3460;;
+    color: var(--dark-main-color);;
+}
+
+#settings-icon:hover {
+    color: var(--hover-main-color);
 }
 
 .settings-body-container {
@@ -200,13 +210,13 @@ input {
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    background-color: #0F3460;
+    background-color: var(--dark-main-color);
     color: white;
     cursor: pointer;
 }
 
 .select-button:hover {
-    background-color: #E94560;
+    background-color: var(--hover-main-color);
 }
 
 #settings-search {
@@ -229,23 +239,23 @@ input {
     position: absolute;
     right: 14px;
     padding-top: 2px;
-    color: #0F3460;
+    color: var(--dark-main-color);
 }
 
 .delete-button-input:hover {
-    color: #E94560;
+    color: var(--hover-main-color);
 }
 
 .settings-checkbox-container input[type='checkbox'] {
-    accent-color: #0F3460;
+    accent-color: var(--dark-main-color);
 }
 
 .settings-checkbox-container input[type='checkbox']:hover {
-    accent-color: #E94560;
+    accent-color: var(--hover-main-color);
 }
 
 input[type='text'], input[type='number'] {
-    border-color: #0F3460;
+    border-color: var(--dark-main-color);
 }
 
 .search-column-input-container {
