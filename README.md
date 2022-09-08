@@ -1,6 +1,6 @@
-# advanced-react-table
+# multifeatured-react-table
 
-An advanced table using react-table, which supports sorting, global searching, pagination, column resizing and column visibility.
+A multifeatured table using react-table, which supports sorting, global searching, pagination, column resizing and column visibility.
 
 
 * [![React][React.js]][React-url]
