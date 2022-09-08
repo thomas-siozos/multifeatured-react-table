@@ -2,6 +2,13 @@
 
 An advanced table using react-table, which supports sorting, global searching, pagination, column resizing and column visibility.
 
+https://reactjs.org/
+![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+https://tanstack.com/table/v8
+![react-table](https://img.shields.io/badge/react%20table-FF4154?style=for-the-badge&logo=react%20table&logoColor=white)
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+![javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
