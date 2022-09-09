@@ -51,6 +51,10 @@ tbody tr:hover {
     background-color: var(--hover-rows-color);
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .table-container {
     margin: 20px;
     border: 1px solid #16213E;

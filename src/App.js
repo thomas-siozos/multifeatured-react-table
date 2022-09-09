@@ -1,4 +1,4 @@
-import AdvancedTable from "./AdvancedTable";
+import MultifeaturedTable from "./MultifeaturedTable";
 import './App.css';
 import {MOCK_DATA} from "./mockData";
 
@@ -49,7 +49,7 @@ const columns = [
 
 function App() {
   return (
-    <AdvancedTable
+    <MultifeaturedTable
         columns={columns}
         data={MOCK_DATA}
     />

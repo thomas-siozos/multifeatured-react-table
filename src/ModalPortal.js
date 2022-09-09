@@ -13,8 +13,8 @@ const ModalPortal = (props) => {
         const { current } = props.parent;
         if (current) {
             return {
-                top: current.getBoundingClientRect().top + current.getBoundingClientRect().height + 10,
-                left: current.getBoundingClientRect().left - (props.isSettingsModal && 200),
+                top: current.getBoundingClientRect().top + window.scrollY + current.getBoundingClientRect().height + 10,
+                left: current.getBoundingClientRect().left + window.scrollX - (props.isSettingsModal && 200),
                 width: props.getWidthFromParent && current.getBoundingClientRect().width
             }
         }

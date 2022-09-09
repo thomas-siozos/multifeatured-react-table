@@ -11,7 +11,7 @@ import ModalPortal from "./ModalPortal";
 import { FaCog } from 'react-icons/fa';
 import { IoIosCloseCircle } from 'react-icons/io';
 
-const AdvancedTable = (props) => {
+const MultifeaturedTable = (props) => {
     const columns = useMemo(() => props.columns, [props.columns]);
     const data = useMemo(() => props.data, [props.data]);
     const [sorting, setSorting] = useState([]);
@@ -161,7 +161,6 @@ const AdvancedTable = (props) => {
                             </div>
                         </div>
                     </ModalPortal>
-                    {/*</div>*/}
                 </div>
             </div>
             <table>
@@ -220,8 +219,8 @@ const AdvancedTable = (props) => {
     );
 }
 
-AdvancedTable.propTypes = {
+MultifeaturedTable.propTypes = {
     containerCssClass: PropTypes.string
 }
 
-export default AdvancedTable;
+export default MultifeaturedTable;
