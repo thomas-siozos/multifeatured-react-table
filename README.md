@@ -1,6 +1,7 @@
 # multifeatured-react-table
 
-A multifeatured table using react-table, which supports sorting, global searching, pagination, column resizing and column visibility.
+A multifeatured table using react-table, which supports sorting, global searching, pagination, column resizing and column visibility. <br/>
+You can find a medium story about this project here https://medium.com/@Thomassiozos/build-a-multifeatured-table-with-tanstack-table-919a462eba89.
 
 
 * [![React][React.js]][React-url]
